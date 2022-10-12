@@ -4,6 +4,7 @@
   <head>
     <!-- creates head and add in the css style sheet -->
     <link rel="stylesheet" href="css/style.css" />
+    <script defer src="app-cart.js"></script>
     <title>Cart</title>
   </head>
 
@@ -44,21 +45,27 @@
 
       <p>Shopping Cart</p>
 
-      <div class="cards-checkout">
-        <div class="row">
-          <div class="column">
-            <img class="item-image" src="assets/original-cinnamon-roll.jpg" />
-          </div>
-          <div class="column">
-            <p class="item-name">Original cinnamon roll</p>
-            <p class="item-text">Glazing: Keep original</p>
-            <p class="item-text">Pack Size: 1</p>
-          </div>
-          <div class="column">
-            <p class="item-text">$2.49</p>
+      <template id="template-item">
+        <div class="cards-checkout">
+          <div class="row">
+            <div class="column">
+              <img
+                class="item-image"
+                id="item-image"
+                src="assets/original-cinnamon-roll.jpg"
+              />
+            </div>
+            <div class="column">
+              <p class="item-name">Original cinnamon roll</p>
+              <p class="item-text">Glazing: Keep original</p>
+              <p class="item-text">Pack Size: 1</p>
+            </div>
+            <div class="column">
+              <p class="item-text">$2.49</p>
+            </div>
           </div>
         </div>
-      </div>
+      </template>
 
       <div class="cards-checkout">
         <div class="row">

@@ -1,41 +1,3 @@
-let allRolls = [
-  {
-    glazing: "Keep Original",
-    price: 0,
-  },
-  {
-    glazing: "Sugar Milk",
-    price: 0,
-  },
-  {
-    glazing: "Vanilla Milk",
-    price: 0.5,
-  },
-  {
-    glazing: "Double Chocolate",
-    price: 1.5,
-  },
-];
-
-let allSizes = [
-  {
-    pack: "1",
-    size: 1,
-  },
-  {
-    pack: "3",
-    size: 3,
-  },
-  {
-    pack: "6",
-    size: 5,
-  },
-  {
-    pack: "12",
-    size: 10,
-  },
-];
-
 const rolls = {
   Original: {
     basePrice: 2.49,
@@ -70,8 +32,6 @@ const rolls = {
 
 let price = 0;
 let amount = 1;
-let rollGlazing = document.querySelector("#glazing");
-let rollAmount = document.querySelector("#packSize");
 
 function displayPrice() {
   totalPrice.innerText = "$" + ((2.49 + price) * amount).toFixed(2);
@@ -117,9 +77,6 @@ let cart = [];
 const queryString = window.location.search;
 const params = new URLSearchParams(queryString);
 const rollType = params.get("roll") || "Original";
-console.log("this is rolls", rolls);
-console.log("this is rolltype", rollType);
-console.log("this is test", rolls["Original"].basePrice);
 let rollBasePrice = rolls[rollType].basePrice;
 
 function updateDetail() {
@@ -148,24 +105,19 @@ cart.push(a, b, c, d);
 function addToCart() {
   let newRoll = new Roll(rollType, rollGlazing, amount, rollBasePrice);
 
-  console.log(newRoll);
-  console.log(cart);
+  cart.push(newRoll);
 }
 
 function displayCart() {
-  // let template = document.getElementById("test-test");
-  let template = document.getElementsByTagName("template")[0];
-  console.log(template);
-  // let templateContent = template.content;
-  // document.body.appendChild(templateContent);
-  console.log(":here");
+  for (let i = 0; i < cart.length; i++) {
+    let template = document.getElementById("template-item");
+
+    console.log(template);
+
+    let templateContent = template.content;
+
+    document.body.appendChild(templateContent);
+  }
 }
 
-let selectElementGlazing = document.querySelector("#glazing");
-let selectElementAmount = document.querySelector("#packSize");
-
-selectElementGlazing.addEventListener("change", onSelectValueChangeGlazing);
-selectElementAmount.addEventListener("change", onSelectValueChangeAmount);
-
-updateDetail();
 displayCart();
